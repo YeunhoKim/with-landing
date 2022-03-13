@@ -3,8 +3,8 @@ import tw from "tailwind-styled-components";
 
 const Back = tw.div`
   bg-blue-900
-  h-screen
-  max-h-screen
+  absolute top-1/4 left-1/4
+  
 `;
 
 const Btn = tw.button`
@@ -12,6 +12,25 @@ const Btn = tw.button`
   h-12
   bg-sky-500
   rounded-3xl
+  text-white
+`;
+
+const Title = tw.h1`
+  text-white
+  text-9xl
+  
+`;
+
+const Describe = tw.h2`
+  text-white
+  text-6xl
+  mb-6
+`;
+
+const MediaContainer = tw.div`
+  absolute top-1/4 left-1/4
+  -z-1
+
 `;
 
 const alertMsg = [
@@ -30,11 +49,10 @@ const onClick = () => {
 const MsgContainer = () => {
   return (
     <Back>
-      <h1 style={{ color: "white" }}>With</h1>
-      <h2 style={{ color: "white" }}>
-        Instant Send Your Problem to solve Together!
-      </h2>
+      <Title>With</Title>
+      <Describe>Solve Together!</Describe>
       <Btn onClick={onClick}>Download!</Btn>
+      <MediaContainer></MediaContainer>
     </Back>
   );
 };
