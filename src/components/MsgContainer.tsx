@@ -2,9 +2,7 @@ import styled from "styled-components";
 import tw from "tailwind-styled-components";
 
 const Back = tw.div`
-  bg-blue-900
   absolute top-1/4 left-1/4
-  
 `;
 
 const Btn = tw.button`
