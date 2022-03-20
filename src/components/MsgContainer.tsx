@@ -46,12 +46,20 @@ const onClick = () => {
 
 const MsgContainer = () => {
   return (
-    <Back>
-      <Title>With</Title>
-      <Describe>Solve Together!</Describe>
-      <Btn onClick={onClick}>Download!</Btn>
-      <MediaContainer></MediaContainer>
-    </Back>
+    <>
+      <video
+        src={require("../videos/web.webm")}
+        muted
+        loop
+        autoPlay
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-10 -z-9999"></video>
+      <Back>
+        <Title>With</Title>
+        <Describe>Solve Together!</Describe>
+        <Btn onClick={onClick}>Download!</Btn>
+        <MediaContainer></MediaContainer>
+      </Back>
+    </>
   );
 };
 

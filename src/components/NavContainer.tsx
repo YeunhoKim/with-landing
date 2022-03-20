@@ -9,6 +9,7 @@ const NavWith = tw.h1`
 const NavMenuContainer = tw.div`
   grid
   grid-cols-4 gap-4
+  z-100
 `;
 
 const NavMenu = tw.h1`
@@ -23,13 +24,7 @@ const menus = ["Menu1", "Menu2", "Menu3", "Menu4"];
 
 function NavContainer() {
   return (
-    <div className="flex justify-between bg-gray-700 p-3">
-      <video
-        src={require("../videos/web.webm")}
-        muted
-        loop
-        autoPlay
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-10"></video>
+    <div className="fixed w-full flex justify-between bg-gray-700 p-3 z-10">
       <NavWith>With</NavWith>
       <NavMenuContainer>
         {menus.map((menu) => (
