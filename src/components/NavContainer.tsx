@@ -1,4 +1,5 @@
 import tw from "tailwind-styled-components";
+import LoginModal from "./LoginModal";
 
 const NavWith = tw.h1`
   text-3xl
@@ -12,7 +13,7 @@ const NavMenuContainer = tw.div`
   z-100
 `;
 
-const NavMenu = tw.h1`
+const NavMenu = tw.button`
   text-3xl
   font-bold
   text-slate-200
@@ -20,7 +21,7 @@ const NavMenu = tw.h1`
   hover:underline underline-offset-1 decoration-slate-200
 `;
 
-const menus = ["Menu1", "Menu2", "Menu3", "Menu4"];
+const menus = ["Menu1", "Menu2", "Menu3"];
 
 function NavContainer() {
   return (
@@ -30,6 +31,7 @@ function NavContainer() {
         {menus.map((menu) => (
           <NavMenu key={menu}>{menu}</NavMenu>
         ))}
+        <LoginModal />
       </NavMenuContainer>
     </div>
   );
