@@ -1,5 +1,5 @@
 import tw from "tailwind-styled-components";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 interface IFormInput {
   email: string;
@@ -25,7 +25,7 @@ const BtnContainer = tw.div`
 function LoginForm() {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit = (data: IFormInput) => {
     const account = data.email;
     const pwd = data.password;
     alert(`Your Account is ${account} and Password is ${pwd}`);
