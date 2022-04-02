@@ -1,4 +1,7 @@
+import { MouseEventHandler } from "react";
+import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
+import { loginState } from "../atom";
 import LoginModal from "./LoginModal";
 
 const NavWith = tw.h1`
@@ -13,7 +16,7 @@ const NavMenuContainer = tw.div`
   z-100
 `;
 
-const NavMenu = tw.button`
+const NavMenu: MouseEventHandler<HTMLButtonElement> = tw.button`
   text-3xl
   font-bold
   text-slate-200
@@ -24,6 +27,7 @@ const NavMenu = tw.button`
 const menus = ["Menu1", "Menu2", "Menu3"];
 
 function NavContainer() {
+  const [login, setLogin] = useRecoilState(loginState);
   return (
     <div className="fixed w-full flex justify-between bg-gray-700 p-3 z-10">
       <NavWith>With</NavWith>
@@ -31,7 +35,13 @@ function NavContainer() {
         {menus.map((menu) => (
           <NavMenu key={menu}>{menu}</NavMenu>
         ))}
-        <LoginModal />
+        {login ? (
+          <NavMenu onClick={() => setLogin((currentValue) => !currentValue)}>
+            Logout
+          </NavMenu>
+        ) : (
+          <LoginModal />
+        )}
       </NavMenuContainer>
     </div>
   );

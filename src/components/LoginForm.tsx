@@ -1,5 +1,7 @@
 import tw from "tailwind-styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { loginState } from "../atom";
 
 interface IFormInput {
   email: string;
@@ -22,13 +24,29 @@ const BtnContainer = tw.div`
   my-3
 `;
 
+const fakeAccount = {
+  email: "with@with.co.kr",
+  password: "1234",
+};
+
 function LoginForm() {
   const { register, handleSubmit } = useForm<IFormInput>();
+  const [login, setLogin] = useRecoilState(loginState);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     const account = data.email;
     const pwd = data.password;
-    alert(`Your Account is ${account} and Password is ${pwd}`);
+    if (fakeAccount.email === account) {
+      if (fakeAccount.password === pwd) {
+        alert("Login Success");
+        setLogin((currentValue) => !currentValue);
+      } else {
+        alert("Wrong password!");
+      }
+    } else {
+      alert("Please Check Your Account");
+    }
+    console.log(login);
   };
 
   return (
