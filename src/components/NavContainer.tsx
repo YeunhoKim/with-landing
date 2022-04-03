@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { MouseEventHandler } from "react";
 import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
@@ -11,12 +12,12 @@ const NavWith = tw.h1`
 `;
 
 const NavMenuContainer = tw.div`
-  grid
-  grid-cols-4 gap-4
+  flex
+  gap-4
   z-100
 `;
 
-const NavMenu = tw.button`
+const NavMenu = tw.a`
   text-3xl
   font-bold
   text-slate-200
@@ -24,7 +25,28 @@ const NavMenu = tw.button`
   hover:underline underline-offset-1 decoration-slate-200
 `;
 
-const menus = ["Menu1", "Menu2", "Menu3"];
+const LoginBtn = tw.button`
+  text-3xl
+  font-bold
+  text-slate-200
+  cursor-pointer
+  hover:underline underline-offset-1 decoration-slate-200
+`;
+
+const menus = [
+  {
+    url: "/with",
+    text: "With?",
+  },
+  {
+    url: "/about",
+    text: "About",
+  },
+  {
+    url: "/faq",
+    text: "FAQ",
+  },
+];
 
 function NavContainer() {
   const [login, setLogin] = useRecoilState(loginState);
@@ -33,16 +55,17 @@ function NavContainer() {
       <NavWith>With</NavWith>
       <NavMenuContainer>
         {menus.map((menu) => (
-          <NavMenu key={menu}>{menu}</NavMenu>
+          <Link key={menu.text} href={menu.url} passHref>
+            <NavMenu key={menu.text}>{menu.text}</NavMenu>
+          </Link>
         ))}
         {login ? (
-          <NavMenu
-            key="logOut"
+          <LoginBtn
             onClick={() => {
               setLogin((currentValue) => !currentValue);
             }}>
             Logout
-          </NavMenu>
+          </LoginBtn>
         ) : (
           <LoginModal />
         )}
