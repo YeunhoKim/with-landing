@@ -1,10 +1,6 @@
 import { atom } from "recoil";
 
-interface ILoginState {
-  logIn: boolean;
-}
-
-export const loginState = atom<ILoginState>({
+export const loginState = atom({
   key: "logIn",
   default: false,
 });
