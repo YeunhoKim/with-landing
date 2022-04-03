@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
 import { loginState } from "../atom";
@@ -16,7 +16,7 @@ const NavMenuContainer = tw.div`
   z-100
 `;
 
-const NavMenu: MouseEventHandler<HTMLButtonElement> = tw.button`
+const NavMenu = tw.button`
   text-3xl
   font-bold
   text-slate-200
@@ -36,7 +36,11 @@ function NavContainer() {
           <NavMenu key={menu}>{menu}</NavMenu>
         ))}
         {login ? (
-          <NavMenu onClick={() => setLogin((currentValue) => !currentValue)}>
+          <NavMenu
+            key="logOut"
+            onClick={() => {
+              setLogin((currentValue) => !currentValue);
+            }}>
             Logout
           </NavMenu>
         ) : (
