@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import tw from "tailwind-styled-components";
 import { loginState } from "../atom";
@@ -48,8 +48,9 @@ const menus = [
   },
 ];
 
-function NavContainer() {
+function NavContainer() {  
   const [login, setLogin] = useRecoilState(loginState);
+
   return (
     <div className="fixed w-full flex justify-between bg-gray-700 p-3 z-10">
       <NavWith>With</NavWith>
