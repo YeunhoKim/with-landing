@@ -7,7 +7,7 @@ import tw from "tailwind-styled-components";
 import MsgContainer from "../src/components/MsgContainer";
 import NavContainer from "../src/components/NavContainer";
 import { RecoilRoot } from "recoil";
-import Layout from "../src/components/layout";
+import Layout from "../src/components/Layout";
 
 const Main = tw.div`
   flex
@@ -21,7 +21,6 @@ const Home: NextPage = () => {
   return (
     <RecoilRoot>
       <Main>
-        <NavContainer />
         <MsgContainer />
       </Main>
     </RecoilRoot>

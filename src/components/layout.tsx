@@ -1,20 +1,14 @@
-import Reacttype from 'react';
-import Navbar from './navbar';
+import React from "react";
+import NavContainer from "./NavContainer";
 
-
-interface LayoutProps {
-	children: React.ReactNode;
+type AppLayoutProps = {
+  children: React.ReactNode;
+};
+export default function Layout({ children }: AppLayoutProps) {
+  return (
+    <>
+      <NavContainer />
+      <div>{children}</div>
+    </>
+  );
 }
-
-function Layout ({children}: LayoutProps) {
-	return (
-	<>
-	<Navbar />
-		<main>{children}</main>
-	</>
-	)
-}
-
-
-
-export default Layout;
